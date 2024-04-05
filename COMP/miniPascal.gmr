@@ -1,0 +1,80 @@
+#------------------------------------
+# funcao principal
+#------------------------------------
+<function*> -> 'program' 'IDENT' ';' <declarations> 'begin' <stmtList> 'end' '.' ;
+
+#------------------------------------
+# declaracoes de variaveis
+#------------------------------------
+<declarations> -> var <declaration> <restoDeclaration> ;
+<declaration> -> <listaIdent> ':' <type> ';' ;
+<listaIdent> -> 'IDENT' <restoIdentList> ;
+<restoIdentList> -> ',' 'IDENT' <restoIdentList> | & ;
+<restoDeclaration> -> <declaration><restoDeclaration> | & ;
+<type> -> 'integer' | 'real' | 'string' ;
+
+#------------------------------------
+# instrucoes dos programas
+#------------------------------------
+<bloco> -> 'begin' <stmtList> 'end;' ;
+<stmtList> -> <stmt> <stmtList> | & ;
+<stmt> -> <forStmt> 
+   | <ioStmt>
+   | <whileStmt>
+   | <atrib> ';'
+   | <ifStmt> 
+   | <bloco> 
+   | 'break'';'
+   | 'continue'';'
+   | ';' ;
+
+#---------------------------
+# descricao das instrucoes
+#---------------------------
+
+# comando for
+<forStmt> -> 'for' <atrib> 'to' <endFor> 'do' <stmt> ;
+<endFor> -> 'IDENT' | 'NUMint' ;
+
+# comandos de IO
+<ioStmt> -> 'read' '(' 'IDENT' ')' ';' 
+          | 'write' '(' <out> ')' ';' ;
+<out> -> 'STR' | 'IDENT' | 'NUMint' | 'NUMfloat' ;
+
+# comando while
+<whileStmt> -> 'while' <expr> <stmt> ;
+
+# comando if
+<ifStmt> -> 'if' <expr> 'then' <stmt> <elsePart> ;
+<elsePart> -> 'else' <stmt> | & ;
+
+#------------------------------
+# expressoes
+#------------------------------
+<atrib> -> 'IDENT' ':=' <expr> ;
+
+<expr> -> <or> ;
+<or> -> <and> <restoOr> ;
+<restoOr> -> 'or' <and> <restoOr> | & ;
+<and> -> <not> <restoAnd> ;
+<restoAnd> -> 'and' <not> <restoAnd> | & ;
+<not> -> 'not' <not> | <rel> ;
+<rel> -> <add> <restoRel> ;
+<restoRel> -> '==' <add> | '<>' <add>
+            | '<' <add> | '<=' <add> 
+            | '>' <add> | '>=' <add> | & ;
+<add> -> <mult> <restoAdd> ;
+<restoAdd> -> '+' <mult> <restoAdd> 
+            | '-' <mult> <restoAdd> | & ;
+<mult> -> <uno> <restoMult> ;
+<restoMult> -> '*' <uno> <restoMult>
+            |  '/' <uno> <restoMult> 
+            |  'mod' <uno> <restoMult> | & ;
+            |  'div' <uno> <restoMult> | & ;
+<uno> -> '+' <uno> | '-' <uno> | <fator> ;
+<fator> -> 'NUMint' | 'NUMfloat' 
+         | 'IDENT'  | '(' <expr> ')' | 'STR' ;
+
+#---------
+# the end
+#---------	  
