@@ -38,7 +38,10 @@
 
 # comandos de IO
 <ioStmt> -> 'read' '(' 'IDENT' ')' ';' 
-          | 'write' '(' <out> ')' ';' ;
+          | 'write' '(' <outList> ')' ';' ;
+
+<outList> -> <out><restoOutList>;
+<restoOutList> -> ',' <outList> | &;
 <out> -> 'STR' | 'IDENT' | 'NUMint' | 'NUMfloat' ;
 
 # comando while
