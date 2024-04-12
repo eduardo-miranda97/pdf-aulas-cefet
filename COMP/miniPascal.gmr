@@ -42,7 +42,7 @@
 <out> -> 'STR' | 'IDENT' | 'NUMint' | 'NUMfloat' ;
 
 # comando while
-<whileStmt> -> 'while' <expr> <stmt> ;
+<whileStmt> -> 'while' <expr> 'do' <stmt> ;
 
 # comando if
 <ifStmt> -> 'if' <expr> 'then' <stmt> <elsePart> ;
