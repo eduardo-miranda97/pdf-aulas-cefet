@@ -16,7 +16,7 @@
 #------------------------------------
 # instrucoes dos programas
 #------------------------------------
-<bloco> -> 'begin' <stmtList> 'end;' ;
+<bloco> -> 'begin' <stmtList> 'end' ';' ;
 <stmtList> -> <stmt> <stmtList> | & ;
 <stmt> -> <forStmt> 
    | <ioStmt>
@@ -38,11 +38,14 @@
 
 # comandos de IO
 <ioStmt> -> 'read' '(' 'IDENT' ')' ';' 
-          | 'write' '(' <out> ')' ';' ;
+          | 'write' '(' <outList> ')' ';' ;
+
+<outList> -> <out><restoOutList>;
+<restoOutList> -> ',' <outList> | &;
 <out> -> 'STR' | 'IDENT' | 'NUMint' | 'NUMfloat' ;
 
 # comando while
-<whileStmt> -> 'while' <expr> <stmt> ;
+<whileStmt> -> 'while' <expr> 'do' <stmt> ;
 
 # comando if
 <ifStmt> -> 'if' <expr> 'then' <stmt> <elsePart> ;
