@@ -3,7 +3,7 @@
 #------------------------------------
 
 <function*> -> <type> 'IDENT' '(' ')' <bloco> ;
-<type> -> 'int' | 'float' | 'string ;
+<type> -> 'int' | 'float' | 'string' ;
 <bloco> -> '{' <stmtList> '}' ;
 <stmtList> -> <stmt> <stmtList> | & ;
 <stmt> -> <forStmt> 
@@ -48,7 +48,7 @@
 #------------------------------
 # expressoes
 #------------------------------
-<atrib> -> 'IDENT' ':=' <expr> 
+<atrib> -> 'IDENT' '=' <expr> 
          | 'IDENT' '+=' <expr> 
          | 'IDENT' '-=' <expr> 
          | 'IDENT' '*=' <expr> 
