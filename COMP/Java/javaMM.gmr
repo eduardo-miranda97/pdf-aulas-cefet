@@ -3,13 +3,13 @@
 #------------------------------------
 
 <function*> -> <type> 'IDENT' '(' ')' <bloco> ;
-<type> -> 'int' | 'float' | 'string ;
+<type> -> 'int' | 'float' | 'string' ;
 <bloco> -> '{' <stmtList> '}' ;
 <stmtList> -> <stmt> <stmtList> | & ;
 <stmt> -> <forStmt> 
    | <ioStmt>
    | <whileStmt>
-   | <expr> ';' 
+   | <atrib> ';' 
    | <ifStmt> 
    | <bloco> 
    | 'break'
@@ -32,8 +32,8 @@
 <optAtrib> -> <atrib> | & ;
 
 # comandos de IO
-<ioStmt> -> 'system' '.' 'out' '.' 'print'  '(' <type> ',' 'IDENT' ')' ';' 
-          | 'system' '.' 'in' '.' 'scan' '(' <outList> ')' ';' ;
+<ioStmt> -> 'system' '.' 'in' '.' 'scan'  '(' <type> ',' 'IDENT' ')' ';' 
+          | 'system' '.' 'out' '.' 'print' '(' <outList> ')' ';' ;
 <outList> -> <out> <restoOutList> ;         
 <out> -> 'STR' | 'IDENT' | 'NUMdec' | 'NUMfloat' | 'NUMoct' | 'NUMhex';
 <restoOutList> -> ',' <out> <restoOutList> | & ;
@@ -48,7 +48,7 @@
 #------------------------------
 # expressoes
 #------------------------------
-<atrib> -> 'IDENT' ':=' <expr> 
+<atrib> -> 'IDENT' '=' <expr> 
          | 'IDENT' '+=' <expr> 
          | 'IDENT' '-=' <expr> 
          | 'IDENT' '*=' <expr> 
