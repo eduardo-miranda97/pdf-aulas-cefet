@@ -1,0 +1,260 @@
+\documentclass[12pt,a4paper]{article}
+
+\PassOptionsToPackage{pdftex}{graphicx}
+\usepackage{graphicx}   
+\usepackage[sfdefault,condensed]{cabin}       
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc} 
+\usepackage[brazil]{babel}
+\usepackage{epstopdf}
+\usepackage{soul}
+\usepackage{array}
+\usepackage[table]{xcolor}  % 'table' option loads »colortbl«
+\usepackage{lipsum}
+\usepackage{subfig}
+\RequirePackage[numbers]{natbib}
+
+\newcommand{\CEFETdisciplina}{Contexto Social e Profissional da Engenharia de Computação}
+\newcommand{\CEFETprofessor}{Eduardo Gabriel Reis Miranda}
+
+
+
+% aumentando as margens originais do documento
+\usepackage{microtype} %melhor divisao de espaco entre letras/palavras
+% aumentando as margens originais do documento
+%\addtolength{\hoffset}{-1.5cm}
+\addtolength{\textwidth}{2cm}
+\addtolength{\hoffset}{-1cm}
+\addtolength{\textheight}{-2cm}
+
+
+%Para algoritmos ---------------------- 
+\usepackage{listings}
+\usepackage{color}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+\lstset{ 
+  language=Octave,                % the language of the code
+  basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+  numbers=left,                   % where to put the line-numbers
+  numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
+  stepnumber=1,                   % the step between two line-numbers. If it's 1, each line 
+                                  % will be numbered
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  %backgroundcolor=\color{bg},    % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  frame=single,                   % adds a frame around the code
+  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=4,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  title=\lstname,                 % show the filename of files included with \lstinputlisting;
+                                  % also try caption instead of title
+  keywordstyle=\color{blue}, %blue     % keyword style
+  commentstyle=\color{dkgreen}, %dkgreen   % comment style
+  stringstyle=\color{mauve}, %mauve      % string literal style
+  escapeinside={\%*}{*)},         % if you want to add a comment within your code
+  morekeywords={*,...}            % if you want to add more keywords to the set
+}
+%--------------------------------------
+ 
+
+\usepackage{lastpage}
+\newcommand*{\renameenviron}[1]{%
+  \expandafter\let\csname exam-#1\expandafter\endcsname\csname #1\endcsname
+  \expandafter\let\csname endexam-#1\expandafter\endcsname\csname end#1\endcsname
+  \expandafter\let\csname #1\endcsname\relax
+  \expandafter\let\csname end#1\endcsname\relax
+}
+\renameenviron{lhead}
+\renameenviron{chead}
+\renameenviron{rhead}
+\renameenviron{lfoot}
+\renameenviron{cfoot}
+\renameenviron{rfoot}
+
+% paragrafos
+\setlength{\parskip}{.5cm}
+\setlength{\parindent}{0pt}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancypagestyle{firstpage}{%
+  \fancyhf{}%
+  \fancyhead[L]{\includegraphics[width=3.6cm]{images/_logo.eps}\vspace{.3cm}}
+  \fancyhead[R]{
+	    \textbf{CENTRO FEDERAL DE EDUCAÇÃO TECNOLÓGICA DE 	    
+	    MINAS GERAIS}\\CAMPUS V - UNIDADE DIVINÓPOLIS - Engenharia 
+	    da Computação\\\vspace{.3cm}\CEFETdisciplina\\\CEFETprofessor\\\vspace{-.3cm}
+  }
+  \renewcommand{\headheight}{85pt}
+}  
+\fancypagestyle{otherpage}{%
+  \fancyhf{}%
+  \renewcommand{\footrulewidth}{1pt}
+  \renewcommand{\headrulewidth}{1pt}
+  \fancyhead[R]{\CEFETdisciplina\\
+    \CEFETprofessor\\\vspace{-.3cm}
+  }
+  \renewcommand{\headheight}{45pt}
+  \addtolength{\textheight}{50pt}
+}  
+
+
+
+\newcommand{\CEFETtitulo}[1]{
+\begin{center}
+\begin{Large}
+\textbf{\\#1\\}
+\end{Large}
+\end{center}
+\vspace{.5cm}
+}
+
+\newcommand{\CEFETsubtitulo}[1]{
+\begin{center}
+\begin{large}
+\textbf{#1\\}
+\end{large}
+\end{center}
+}
+
+
+\newcommand{\CEFETopen}{
+    \selectlanguage{brazil}
+    \pagestyle{otherpage}
+    \thispagestyle{firstpage}
+}    
+    
+    
+%para colunas--------------------------
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}
+\definecolor{cefetblue}{RGB}{2, 65, 112}
+\makeatletter
+\def\columnseprulecolor\vrule\@width\columnseprule{
+%Separar colunas com pontinhos entre elas
+%\vbox to \ht\mult@rightbox{\leaders\vbox{\kern2pt\hbox{.}\kern2pt}\vfill}}
+%Separar colunas SEM pontinhos entre elas
+\vbox to \ht\mult@rightbox{\leaders\vbox{\kern2pt\kern2pt}\vfill}}
+\makeatother
+\setlength{\columnseprule}{5px}   
+%--------------------------------------    
+    
+     
+
+\begin{document}
+	\title{Modelo Relatório CEFET}
+	\CEFETopen
+    
+    \CEFETtitulo{Trabalho Legal:\\Esse trabalho ficou muito legal}
+    %Coloquem os nomes de todos os alunos aqui%
+    Alunos: João Marques. Maria Marta. Marques João. Marta Maria
+
+
+\section{Introdução}
+\lipsum[1-2]
+\subsection{Coisas}
+\lipsum[1-2]
+
+%importando algoritmo de arquivo de codigo
+\vspace{.3cm}
+\lstinputlisting[language=C++]{code.cpp}
+
+\subsection{Outras Coisas}
+\lipsum[1-2]
+
+%Escrevendo algoritmo
+\begin{lstlisting}[language=Java, caption={},label={}]
+package pessoa;
+
+public class Pessoa {
+    public String nome;
+    public int idade;
+
+    public static void main(String[] args) {
+        Pessoa p1 = new Pessoa(); 
+    
+    }
+}
+\end{lstlisting}
+
+
+
+\section{Coisas Difíceis}
+\lipsum[1]
+\subsection{Coisas}
+
+Isso é algo que \citet{Liu2007494} e \citet{law} disse em seu trabalho. A água é molhada \citep{1987element}. O sol é quente \citep{1987element,Liu2007494,site_sparselib}.
+
+\lipsum[1-2]
+
+
+%Tabela
+\begin{center}
+\vspace{.3cm}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{A}&\textbf{B}&\textbf{C}\\ \hline \hline
+1&2&3\\
+1&2&3\\
+1&2&3\\ \hline
+\end{tabular}
+\vspace{.3cm}
+\end{center}
+
+\lipsum[1-2]
+
+\subsection{Outras Coisas}
+\lipsum[1-2]
+
+De acordo com a Figura \ref{fig:figura2}.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\textwidth]{images/_logo}
+\caption[]{Figura legal A}
+\label{fig:figura1}
+\end{figure}
+
+\lipsum[1-2]
+
+\begin{figure}[h]
+  \centering
+  \subfloat[]{\includegraphics[width=0.3\textwidth]{images/_logo}}\quad\quad
+  \subfloat[]{\includegraphics[width=0.3\textwidth]{images/_logo}}
+\caption[]{Figura legal B}
+\label{fig:figura2}
+\end{figure}
+
+\lipsum[1-2]
+
+\begin{eqnarray*}
+(ano - nc) + (ano - ic) &\geq& 95\\
+2\times ano - nc - ic  &\geq& 95\\
+2\times ano &\geq& 95 + nc + ic\\
+ano &\geq& (95 + nc + ic)/2
+\end{eqnarray*}
+
+\lipsum[1-2]
+ 
+% Referências-------------------
+
+% alpha - Sorted alphabetically. Labels are formed from name of author and year of publication. 
+% plain - Sorted alphabetically. Labels are numeric. 
+% unsrt - Like plain, but entries are in order of citation. 
+% abbrv - Like plain, but more compact labels. 
+\clearpage
+%\bibliographystyle{abbrv}
+%\bibliographystyle{plainnat-pt}
+\bibliographystyle{plainnat}
+\bibliography{lucaspa} %nome do arquivo bibtex
+
+% -------------------------------
+
+\end{document}
