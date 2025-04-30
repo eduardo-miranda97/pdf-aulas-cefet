@@ -39,6 +39,8 @@
 # comandos de IO
 <ioStmt> -> 'read' '(' 'IDENT' ')' ';' 
           | 'write' '(' <outList> ')' ';' ;
+          | 'readln' '(' 'IDENT' ')' ';'
+          | 'writeln' '(' <outList> ')' ';' ;
 
 <outList> -> <out><restoOutList>;
 <restoOutList> -> ',' <outList> | &;
