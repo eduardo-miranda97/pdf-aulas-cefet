@@ -1,0 +1,88 @@
+#------------------------------------
+# o programa sera numa funcao main
+#------------------------------------
+
+<function*> -> 'bora_cumpade' 'main' '(' ')' <bloco> ;
+<type> -> 'trem_di_numero' | 'trem_cum_virgula' |
+          'trem_discrita' | 'trem_discolhe' |
+          'trosso' ;
+<bloco> -> 'simbora' <stmtList> 'cabo' ;
+<stmtList> -> <stmt> <stmtList> | & ;
+<stmt> -> <forStmt> 
+   | <ioStmt>
+   | <whileStmt>
+   | <atrib> 'uai' 
+   | <ifStmt> 
+   | <caseStmt> 
+   | <bloco> 
+   | 'para_o_trem'
+   | 'toca_o_trem'
+   | <declaration>
+   | 'uai' ;
+
+#---------------------------
+# descricao das instrucoes
+#---------------------------
+
+# declaracoes
+<declaration> -> <type> <identList> ';' ;
+<identList> -> 'IDENT' <restoIdentList> ;
+<restoIdentList> -> ',' 'IDENT' <restoIdentList> | & ;
+
+# comando for
+<forStmt> -> 'roda_esse_trem' '(' <optExpr> ';' <optExpr> ';' <optExpr> ')' <stmt> ;
+<optExpr> -> <atrib> | & ;
+
+# comandos de IO
+<ioStmt> -> 'xove' '(' <type> ',' 'IDENT' ')' ';' 
+          | 'oia_proce_ve' '(' <outList> ')' ';' ;
+<outList> -> <out> <restoOutList> ;         
+<out> -> <fatorZin>;
+<restoOutList> -> ',' <out> <restoOutList> | & ;
+
+# comando while
+<whileStmt> -> 'enquanto_tiver_trem' '(' <expr> ')' <stmt> ;
+
+# comando if
+<ifStmt> -> 'uai_se' '(' <expr> ')' <stmt> <elsePart> ;
+<elsePart> -> 'uai_senao' <stmt> | & ;
+
+# comando case
+<caseStmt> -> 'dependenu' '(' 'IDENT' ')' 'simbora' <dosCasos> 'cabo' ;
+<dosCasos> -> <doCaso> <restoDosCasos>
+<doCaso> -> 'du_caso' <fatorZin> ':' <stmt>
+<restoDosCasos> -> <doCaso><restoDosCasos> | 'default' ':' <stmt> | &
+
+#------------------------------
+# expressoes
+#------------------------------
+<expr> -> <atrib> ;
+<atrib> -> <or> <restoAtrib> ;
+<restoAtrib> -> 'fica_assim_entao' <atrib> | & ;
+<or> -> <xor> <restoOr> ;
+<restoOr> -> 'quarque_um' <xor> <restoOr> | & ;
+<xor> -> <not> <restoAnd> ;
+<restoXor> -> 'um_o_oto' <not> <restoAnd> | & ;
+<and> -> <not> <restoAnd> ;
+<restoAnd> -> 'tamem' <not> <restoAnd> | & ;
+<not> -> 'vam_marca' <not> | <rel> ;
+<rel> -> <add> <restoRel> ;
+<restoRel> -> 'mema_coisa' <add> | 'neh_nada' <add>
+            | '<' <add> | '<=' <add> 
+            | '>' <add> | '>=' <add> | & ;
+<add> -> <mult> <restoAdd> ;
+<restoAdd> -> '+' <mult> <restoAdd> 
+            | '-' <mult> <restoAdd> | & ;
+<mult> -> <uno> <restoMult> ;
+<restoMult> -> 'veiz' <uno> <restoMult>
+            |  'sob' <uno> <restoMult> 
+            |  '/' <uno> <restoMult>
+            |  '%' <uno> <restoMult> | & ;
+<uno> -> '+' <uno> | '-' <uno> | <fatorZao> ;
+<fatorZao> -> <fatorZin> | '(' <atrib> ')' ;
+<fatorZin> -> 'STR' | 'IDENT' | 'NUMint' | 'NUMfloat' | 'valorBooleano' | 'valorChar'
+
+#---------
+# the end
+#---------	  
+
