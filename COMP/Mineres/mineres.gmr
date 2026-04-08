@@ -3,7 +3,7 @@
 #------------------------------------
 
 <function*> -> 'bora_cumpade' 'main' '(' ')' <bloco> ;
-<type> -> 'trem_di_numero' | 'trem_cum_virgula' |
+<type> -> 'trem_di_numeru' | 'trem_cum_virgula' |
           'trem_discrita' | 'trem_discolhe' |
           'trosso' ;
 <bloco> -> 'simbora' <stmtList> 'cabo' ;
@@ -15,8 +15,8 @@
    | <ifStmt> 
    | <caseStmt> 
    | <bloco> 
-   | 'para_o_trem'
-   | 'toca_o_trem'
+   | 'para_o_trem' 'uai'
+   | 'toca_o_trem' 'uai'
    | <declaration>
    | 'uai' ;
 
@@ -25,7 +25,7 @@
 #---------------------------
 
 # declaracoes
-<declaration> -> <type> <identList> ';' ;
+<declaration> -> <type> <identList> 'uai' ;
 <identList> -> 'IDENT' <restoIdentList> ;
 <restoIdentList> -> ',' 'IDENT' <restoIdentList> | & ;
 
@@ -34,8 +34,8 @@
 <optExpr> -> <atrib> | & ;
 
 # comandos de IO
-<ioStmt> -> 'xove' '(' <type> ',' 'IDENT' ')' ';' 
-          | 'oia_proce_ve' '(' <outList> ')' ';' ;
+<ioStmt> -> 'xove' '(' <type> ',' 'IDENT' ')' 'uai' 
+          | 'oia_proce_ve' '(' <outList> ')' 'uai' ;
 <outList> -> <out> <restoOutList> ;         
 <out> -> <fatorZin>;
 <restoOutList> -> ',' <out> <restoOutList> | & ;
@@ -50,7 +50,7 @@
 # comando case
 <caseStmt> -> 'dependenu' '(' 'IDENT' ')' 'simbora' <dosCasos> 'cabo' ;
 <dosCasos> -> <doCaso> <restoDosCasos>
-<doCaso> -> 'du_caso' <fatorZin> ':' <stmt>
+<doCaso> -> 'du_casu' <fatorZin> ':' <stmt>
 <restoDosCasos> -> <doCaso><restoDosCasos> | 'default' ':' <stmt> | &
 
 #------------------------------
@@ -61,8 +61,8 @@
 <restoAtrib> -> 'fica_assim_entao' <atrib> | & ;
 <or> -> <xor> <restoOr> ;
 <restoOr> -> 'quarque_um' <xor> <restoOr> | & ;
-<xor> -> <not> <restoAnd> ;
-<restoXor> -> 'um_o_oto' <not> <restoAnd> | & ;
+<xor> -> <and> <restoXor> ;
+<restoXor> -> 'um_o_oto' <and> <restoXor> | & ;
 <and> -> <not> <restoAnd> ;
 <restoAnd> -> 'tamem' <not> <restoAnd> | & ;
 <not> -> 'vam_marca' <not> | <rel> ;
