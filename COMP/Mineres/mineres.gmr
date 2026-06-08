@@ -50,7 +50,7 @@
 # comando case
 <caseStmt> -> 'dependenu' '(' 'IDENT' ')' 'simbora' <dosCasos> 'cabo' ;
 <dosCasos> -> <doCaso> <restoDosCasos>
-<doCaso> -> 'du_casu' <fatorZin> ':' <stmt>
+<doCaso> -> 'du_casu' <fatorZinMenorAinda> ':' <stmt>
 <restoDosCasos> -> <doCaso><restoDosCasos> | 'default' ':' <stmt> | &
 
 #------------------------------
@@ -81,7 +81,7 @@
 <uno> -> '+' <uno> | '-' <uno> | <fatorZao> ;
 <fatorZao> -> <fatorZin> | '(' <atrib> ')' ;
 <fatorZin> -> 'STR' | 'IDENT' | 'NUMint' | 'NUMfloat' | 'valorBooleano' | 'valorChar'
-
+<fatorZinMenorAinda> -> 'STR' | 'NUMint' | 'NUMfloat' | 'valorBooleano' | 'valorChar'
 #---------
 # the end
 #---------	  
